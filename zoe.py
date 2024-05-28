@@ -28,7 +28,7 @@ def create_app():
     y_offset = int((screen_height - height) / 2)
 
     # Set the initial size and position of the window
-    root.geometry(f'{width} x {height} + {x_offset} + {y_offset}')
+    root.geometry(f'{width}x{height}+{x_offset}+{y_offset}')
 
     # Create a navigation bar.
     nav_bar = ttk.Frame(root, padding="10")
@@ -38,7 +38,11 @@ def create_app():
     content_frame = tk.Frame(root, bg='#1a1a1a')
     content_frame.pack(fill='both', expand=True)
 
-    
+    # Define the navigation buttons and their corresponding functions.
+    nav_buttons = [
+        ("AI-Powered Trading Bot")
+    ]
+
 
 
 
