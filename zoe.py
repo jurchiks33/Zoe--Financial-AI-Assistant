@@ -40,11 +40,22 @@ def create_app():
 
     # Define the navigation buttons and their corresponding functions.
     nav_buttons = [
-        ("AI-Powered Trading Bot")
+        ("AI-Powered Trading Bot", ai_trading_bot.create_page),
+        ("Sentiment Analysis for Market Prediction", sentiment_analysis.create_page),
+        ("Portfolio Optimization Tool", portfolio_optimization.create_page),
+        ("Fraud Detection System", fraud_detection.create_page),
+        ("Personal Finance Advisor", personal_finance_advisor.create_page)
     ]
 
-
-
+    # Adding buttons to the navigation bar
+    for button_text, command in nav_buttons:
+        button = ttk.Button(nav_bar, text=button_text, command=lambda 
+                            cmd=command: cmd(content_frame))
+        button.pack(side="left", padx=5)
 
     return root
+
+# Create and run application
+app = create_app()
+app.mainloop()
     
