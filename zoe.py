@@ -9,6 +9,12 @@ import fraud_detection
 import personal_finance_advisor
 
 
+# Function to clear content frame
+def clear_frame(frame):
+    for widget in frame.winfo_children():
+        widget.destroy()
+
+
 # Function for the main application window.
 def create_app():
     root = tk.Tk()
