@@ -45,15 +45,25 @@ def create_page(content_frame):
         widget.destroy()
 
     # Create background frame
-    frame = tk.Frame(content_frame, bg='red')
+    frame = tk.Frame(content_frame, bg='#1a1a1a')
     frame.pack(fill='both', expand=True)
 
     #Use container frame inside to manage padding
-    container = tk.Frame(frame, bg='red', padx=12, pady=12)
+    container = tk.Frame(frame, bg='#1a1a1a', padx=12, pady=12)
     container.pack(expand=True, fill='both')
 
     # Place a label inside container
-    label = ttk.Label(container, text="AI-Powered Trading Bot", background='red')
-    label.pack()
+    label = ttk.Label(container, text="AI-Powered Trading Bot", background='#1a1a1a', 
+                      foreground='white', font=("Helvetica", 18))
+    label.pack(pady=10)
 
-    return frame
+    symbol_label = ttk.Label(container, text="Enter Stock Symbol", 
+                             background='#1a1a1a', foreground='white')
+    symbol_label.pack(pady=5)
+    symbol_entry = ttk.Entry(container)
+    symbol_entry.pack(pady=5)
+
+
+
+
+    # return frame
