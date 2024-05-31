@@ -27,7 +27,7 @@ def simulate_trading_strategy(symbol, container):
     stock_data['SMA200'] = stock_data['Close'].rolling(window=200).mean()
 
     fig, ax = plt.subplots()
-    ax.plot(stock_data['Close'], label='Close Price')
+    ax.plot(stock_data['Close'], label='Close Price')  
     ax.plot(stock_data['SMA50'], label='50-Day SMA')
     ax.plot(stock_data['SMA200'], label='200-Day SMA')
     ax.set_title(f'{symbol} Trading Strategy')
@@ -48,9 +48,26 @@ def create_page(content_frame):
     frame = tk.Frame(content_frame, bg='#1a1a1a')
     frame.pack(fill='both', expand=True)
 
-    # Use container frame inside to manage padding
-    container = tk.Frame(frame, bg='#1a1a1a', padx=12, pady=12)
-    container.pack(expand=True, fill='both')
+    # Use grid layout
+    frame.grid_rowconfigure(0, weight=1)
+    frame.grid_rowconfigure(1, weight=0)  
+    frame.grid_columnconfigure(0, weight=1)
+    frame.grid_columnconfigure(1, weight=4)  
+    frame.grid_columnconfigure(2, weight=1)
+
+    # Left and right padding frames
+    left_pad = tk.Frame(frame, bg='#333333', width=200)
+    left_pad.grid(row=0, column=0, rowspan=2, sticky='ns')
+
+    right_pad = tk.Frame(frame, bg='#333333', width=200)
+    right_pad.grid(row=0, column=2, rowspan=2, sticky='ns')
+
+    bottom_pad = tk.Frame(frame, bg='#333333', height=150)
+    bottom_pad.grid(row=1, column=0, columnspan=3, sticky='ew')
+
+    # Container for main content in the middle
+    container = tk.Frame(frame, bg='#1a1a1a')
+    container.grid(row=0, column=1, sticky='nsew', padx=20, pady=20)
 
     # Place a label inside container
     label = ttk.Label(container, text="AI-Powered Trading Bot", background='#1a1a1a', 
@@ -68,19 +85,26 @@ def create_page(content_frame):
         clear_frame(container)
         plot_stock_data(symbol, container)
         simulate_trading_strategy(symbol, container)
-    
-    submit_button = ttk.Button(container, text='Submit', command=on_submit)
-    submit_button.pack(pady=5)
+        recreate_submit_button()
+
+    def recreate_submit_button():
+        submit_button = ttk.Button(container, text='Submit', command=on_submit)
+        submit_button.pack(pady=5)
+
+    recreate_submit_button()
 
 def clear_frame(frame):
     for widget in frame.winfo_children():
-        widget.destroy()
+        if isinstance(widget, FigureCanvasTkAgg):
+            widget.get_tk_widget().destroy()
+        else:
+            widget.destroy()
 
 # Test for a page creation function
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("AI-Powered Trading Bot")
-    root.geometry("800x600")
+    root.geometry("1000x700")  
     content_frame = tk.Frame(root, bg='#1a1a1a')
     content_frame.pack(fill='both', expand=True)
     create_page(content_frame)
