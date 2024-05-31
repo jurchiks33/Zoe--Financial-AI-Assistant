@@ -63,6 +63,15 @@ def create_page(content_frame):
     symbol_entry = ttk.Entry(container)
     symbol_entry.pack(pady=5)
 
+    def on_submit():
+        symbol = symbol_entry.get().upper()
+        clear_frame(container)
+        plot_stock_data(symbol, container)
+        simulate_trading_strategy(symbol, container)
+    
+    submit_button = ttk.Button(container, text='Submit', command=on_submit)
+    submit_button.pack(pady=5)
+
 
 
 
