@@ -67,3 +67,10 @@ def create_page(content_frame):
     frame2.place(relx=0.05, rely=0.28, relwidth=0.2, relheight=0.2)
     frame3.place(relx=0.05, rely=0.05, relwidth=0.4, relheight=0.43)
     frame4.place(relx=0.75, rely=0.05, relwidth=0.2, relheight=0.2)
+    frame5.place(relx=0.75, rely=0.28, relwidth=0.2, relheight=0.2)
+    frame6.place(relx=0.26, rely=0.05, relwidth=0.03, relheight=0.43)  # Long vertical left
+    frame7.place(relx=0.71, rely=0.05, relwidth=0.03, relheight=0.43)  # Long vertical right
+    frame8.place(relx=0.15, rely=0.49, relwidth=0.7, relheight=0.15)
+    frame9.place(relx=0.05, rely=0.49, relwidth=0.095, relheight=0.15)
+    frame10.place(relx=0.855, rely=0.49, relwidth=0.095, relheight=0.15)
+    frame11.place(relx=0.05, rely=0.65, relwidth=0.9, relheight=0.2)
