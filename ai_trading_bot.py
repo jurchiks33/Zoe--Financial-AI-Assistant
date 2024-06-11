@@ -30,4 +30,11 @@ def simulate_trading_strategy(symbol, container):
     ax.plot(stock_data['Close'], label='Close Price')
     ax.plot(stock_data['SMA50'], label='50-Day SMA')
     ax.plot(stock_data['SMA200'], label='200-Day SMA')
-    
+    ax.set_title(f'{symbol} Trading Strategy')
+    ax.set_xlabel('Date')
+    ax.set_ylabel('Price')
+    ax.legend()
+
+    canvas = FigureCanvasTkAgg(fig, master=container)
+    canvas.draw()
+    canvas.get_tk_widget().pack(expand=True, fill='both')
