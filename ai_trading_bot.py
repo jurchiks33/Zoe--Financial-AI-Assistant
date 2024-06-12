@@ -112,4 +112,12 @@ def clear_frame(frame):
         else:
             widget.destroy()
 
-
+# test for a page creation
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("AI-Powered Trading Bot")
+    root.geometry("1000x700")
+    content_frame = tk.Frame(root, bg='#1a1a1a')
+    content_frame.pack(fill='both', expand=True)
+    create_page(content_frame)
+    root.mainloop()
