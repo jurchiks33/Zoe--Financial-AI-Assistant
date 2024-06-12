@@ -11,7 +11,24 @@ symbol_entry = None  # Placeholder for symbol entry widget
 
 # Function for stock data plotting with time frame selection
 def plot_stock_data(symbol, container, interval='1d'):
-    stock_data = yf.download(symbol, interval=interval)
+    period = '1y'
+    if interval == '1m':
+        period = '1d'
+    elif interval == '2m':
+        period = '2d'
+    elif interval == '3m':
+        period = '3d'
+    elif interval == '5m':
+        period = '5d'
+    elif interval == '15m':
+        period = '30d'
+    elif interval == '60m':
+        period = '50d'
+    elif interval == '4h':
+        interval = '1h'
+        period = '1y'
+
+    stock_data = yf.download(symbol, period=period, interval=interval)
     fig, ax = plt.subplots()
     ax.plot(stock_data['Close'], label='Close Price')
     ax.set_title(f'{symbol} Closing Prices ({interval})')
@@ -25,7 +42,24 @@ def plot_stock_data(symbol, container, interval='1d'):
 
 # Trading strategies
 def simulate_trading_strategy(symbol, container, interval='1d'):
-    stock_data = yf.download(symbol, interval=interval)
+    period = '1y'
+    if interval == '1m':
+        period = '1d'
+    elif interval == '2m':
+        period = '2d'
+    elif interval == '3m':
+        period = '3d'
+    elif interval == '5m':
+        period = '5d'
+    elif interval == '15m':
+        period = '30d'
+    elif interval == '60m':
+        period = '50d'
+    elif interval == '4h':
+        interval = '1h'
+        period = '1y'
+
+    stock_data = yf.download(symbol, period=period, interval=interval)
     stock_data['SMA50'] = stock_data['Close'].rolling(window=50).mean()
     stock_data['SMA200'] = stock_data['Close'].rolling(window=200).mean()
 
@@ -140,7 +174,9 @@ def create_page(content_frame):
         global current_interval
         current_interval = new_interval
         if symbol_entry.get().upper():  # Check if symbol entry is not empty
-            on_submit()
+            clear_chart_container(container)
+            plot_stock_data(symbol_entry.get().upper(), container, interval=current_interval)
+            simulate_trading_strategy(symbol_entry.get().upper(), container, interval=current_interval)
 
     # Spread buttons evenly across frame7
     for i, tf in enumerate(time_frames):
