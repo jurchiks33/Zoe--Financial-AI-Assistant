@@ -101,8 +101,15 @@ def create_page(content_frame):
     def recreate_submit_button():
         submit_button = ttk.Button(container, text='Submit', command=on_submit)
         submit_button.pack(pady=5)
-        
+
     recreate_submit_button()
     
 
 def clear_frame(frame):
+    for widget in frame.winfo_children():
+        if isinstance(widget, FigureCanvasTkAgg):
+            widget.get_tk_widget().destroy()
+        else:
+            widget.destroy()
+
+
