@@ -62,17 +62,17 @@ def create_page(content_frame):
     frame11 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
 
     # Place frames in a layout
-    frame1.place(relx=0.05, rely=0.05, relwidth=0.2, relheight=0.2)
-    frame2.place(relx=0.05, rely=0.28, relwidth=0.2, relheight=0.2)
+    frame1.place(relx=0.02, rely=0.05, relwidth=0.2, relheight=0.2)
+    frame2.place(relx=0.02, rely=0.28, relwidth=0.2, relheight=0.2)
     frame3.place(relx=0.3, rely=0.05, relwidth=0.4, relheight=0.43)
-    frame4.place(relx=0.75, rely=0.05, relwidth=0.2, relheight=0.2)
-    frame5.place(relx=0.75, rely=0.28, relwidth=0.2, relheight=0.2)
-    frame6.place(relx=0.26, rely=0.05, relwidth=0.03, relheight=0.43)  # Long vertical left
-    frame7.place(relx=0.71, rely=0.05, relwidth=0.03, relheight=0.43)  # Long vertical right
-    frame8.place(relx=0.15, rely=0.49, relwidth=0.7, relheight=0.15)
-    frame9.place(relx=0.05, rely=0.49, relwidth=0.095, relheight=0.15)
-    frame10.place(relx=0.855, rely=0.49, relwidth=0.095, relheight=0.15)
-    frame11.place(relx=0.05, rely=0.65, relwidth=0.9, relheight=0.2)
+    frame4.place(relx=0.78, rely=0.05, relwidth=0.2, relheight=0.2)
+    frame5.place(relx=0.78, rely=0.28, relwidth=0.2, relheight=0.2)
+    frame6.place(relx=0.228, rely=0.05, relwidth=0.06, relheight=0.43)  # Long vertical left
+    frame7.place(relx=0.71, rely=0.05, relwidth=0.06, relheight=0.43)  # Long vertical right
+    frame8.place(relx=0.15, rely=0.49, relwidth=0.7, relheight=0.20)
+    frame9.place(relx=0.02, rely=0.49, relwidth=0.125, relheight=0.20)
+    frame10.place(relx=0.855, rely=0.49, relwidth=0.125, relheight=0.20)
+    frame11.place(relx=0.02, rely=0.70, relwidth=0.96, relheight=0.26)
 
     # Labels to place text inside the frames (for now to identify correct frame)
     label1 = tk.Label(frame1, text="Frame1", bg='#333333', fg='white')
