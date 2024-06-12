@@ -99,6 +99,10 @@ def create_page(content_frame):
         recreate_submit_button()
     
     def recreate_submit_button():
+        submit_button = ttk.Button(container, text='Submit', command=on_submit)
+        submit_button.pack(pady=5)
+        
+    recreate_submit_button()
     
 
 def clear_frame(frame):
