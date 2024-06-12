@@ -74,3 +74,19 @@ def create_page(content_frame):
     frame9.place(relx=0.05, rely=0.49, relwidth=0.095, relheight=0.15)
     frame10.place(relx=0.855, rely=0.49, relwidth=0.095, relheight=0.15)
     frame11.place(relx=0.05, rely=0.65, relwidth=0.9, relheight=0.2)
+
+    # container for main content frame
+    container = tk.Frame(frame3, bg='#1a1a1a')
+    container.pack(fill='both', expand=True, padx=10, pady=10)
+
+    # label for container
+    label = ttk.Label(container, text='AI-Powered Trading Bot', background='1a1a1a', 
+                      foreground='white', font=("Helvetica", 18))
+    label.pack(pady=10)
+
+    symbol_label = ttk.Label(container, text="Enter Stock Symbol:",
+                             background='1a1a1a', foreground='white')
+    
+    symbol_label.pack(pady=5)
+    symbol_entry = ttk.Entry(container)
+    symbol_entry.pack(pady=5)
