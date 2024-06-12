@@ -6,12 +6,15 @@ import yfinance as yf
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-# Function for stock data plotting
-def plot_stock_data(symbol, container):
-    stock_data = yf.download(symbol, period="1y")
+current_interval = '1d'  # Default time frame
+symbol_entry = None  # Placeholder for symbol entry widget
+
+# Function for stock data plotting with time frame selection
+def plot_stock_data(symbol, container, interval='1d'):
+    stock_data = yf.download(symbol, interval=interval)
     fig, ax = plt.subplots()
-    ax.plot(stock_data['Close'], label='Close Price')  
-    ax.set_title(f'{symbol} Closing Prices')
+    ax.plot(stock_data['Close'], label='Close Price')
+    ax.set_title(f'{symbol} Closing Prices ({interval})')
     ax.set_xlabel('Date')
     ax.set_ylabel('Price')
     ax.legend()
@@ -21,16 +24,16 @@ def plot_stock_data(symbol, container):
     canvas.get_tk_widget().pack(expand=True, fill='both')
 
 # Trading strategies
-def simulate_trading_strategy(symbol, container):
-    stock_data = yf.download(symbol, period="1y")
+def simulate_trading_strategy(symbol, container, interval='1d'):
+    stock_data = yf.download(symbol, interval=interval)
     stock_data['SMA50'] = stock_data['Close'].rolling(window=50).mean()
     stock_data['SMA200'] = stock_data['Close'].rolling(window=200).mean()
 
     fig, ax = plt.subplots()
-    ax.plot(stock_data['Close'], label='Close Price')  
+    ax.plot(stock_data['Close'], label='Close Price')
     ax.plot(stock_data['SMA50'], label='50-Day SMA')
     ax.plot(stock_data['SMA200'], label='200-Day SMA')
-    ax.set_title(f'{symbol} Trading Strategy')
+    ax.set_title(f'{symbol} Trading Strategy ({interval})')
     ax.set_xlabel('Date')
     ax.set_ylabel('Price')
     ax.legend()
@@ -40,6 +43,9 @@ def simulate_trading_strategy(symbol, container):
     canvas.get_tk_widget().pack(expand=True, fill='both')
 
 def create_page(content_frame):
+    global current_interval
+    global symbol_entry
+
     # Clear previous content
     for widget in content_frame.winfo_children():
         widget.destroy()
@@ -69,10 +75,10 @@ def create_page(content_frame):
     frame5.place(relx=0.78, rely=0.28, relwidth=0.2, relheight=0.2)
     frame6.place(relx=0.228, rely=0.05, relwidth=0.06, relheight=0.43)  # Long vertical left
     frame7.place(relx=0.71, rely=0.05, relwidth=0.06, relheight=0.43)  # Long vertical right
-    frame8.place(relx=0.15, rely=0.49, relwidth=0.7, relheight=0.20)
-    frame9.place(relx=0.02, rely=0.49, relwidth=0.125, relheight=0.20)
-    frame10.place(relx=0.855, rely=0.49, relwidth=0.125, relheight=0.20)
-    frame11.place(relx=0.02, rely=0.70, relwidth=0.96, relheight=0.26)
+    frame8.place(relx=0.15, rely=0.49, relwidth=0.7, relheight=0.2)
+    frame9.place(relx=0.02, rely=0.49, relwidth=0.125, relheight=0.2)
+    frame10.place(relx=0.855, rely=0.49, relwidth=0.125, relheight=0.2)
+    frame11.place(relx=0.02, rely=0.7, relwidth=0.96, relheight=0.26)
 
     # Labels to place text inside the frames (for now to identify correct frame)
     label1 = tk.Label(frame1, text="Frame1", bg='#333333', fg='white')
@@ -115,10 +121,11 @@ def create_page(content_frame):
 
     def on_submit():
         symbol = symbol_entry.get().upper()
-        clear_frame(container)
-        plot_stock_data(symbol, container)
-        simulate_trading_strategy(symbol, container)
-        recreate_submit_button()
+        if symbol:  # Check if symbol is not empty
+            clear_chart_container(container)
+            plot_stock_data(symbol, container, interval=current_interval)
+            simulate_trading_strategy(symbol, container, interval=current_interval)
+            recreate_submit_button()
 
     def recreate_submit_button():
         submit_button = ttk.Button(container, text='Submit', command=on_submit)
@@ -126,19 +133,23 @@ def create_page(content_frame):
 
     recreate_submit_button()
 
-def clear_frame(frame):
+    # Add time frame buttons to frame7
+    time_frames = ['1m', '2m', '3m', '5m', '15m', '30m', '60m', '4h', '1d', '1wk', '1mo', '1y']
+
+    def update_interval(new_interval):
+        global current_interval
+        current_interval = new_interval
+        if symbol_entry.get().upper():  # Check if symbol entry is not empty
+            on_submit()
+
+    # Spread buttons evenly across frame7
+    for i, tf in enumerate(time_frames):
+        button = ttk.Button(frame7, text=tf, command=lambda tf=tf: update_interval(tf))
+        button.place(relx=0.1, rely=i*0.08 + 0.02, relwidth=0.8, relheight=0.06)
+
+def clear_chart_container(frame):
     for widget in frame.winfo_children():
         if isinstance(widget, FigureCanvasTkAgg):
             widget.get_tk_widget().destroy()
         else:
             widget.destroy()
-
-# Test for page creation function
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.title("AI-Powered Trading Bot")
-    root.geometry("1000x700")
-    content_frame = tk.Frame(root, bg='#1a1a1a')
-    content_frame.pack(fill='both', expand=True)
-    create_page(content_frame)
-    root.mainloop()

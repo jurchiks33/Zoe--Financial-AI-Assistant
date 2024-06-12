@@ -8,7 +8,6 @@ import portfolio_optimization
 import fraud_detection
 import personal_finance_advisor
 
-
 # Function to clear content frame
 def clear_frame(frame):
     for widget in frame.winfo_children():
@@ -31,7 +30,6 @@ def create_welcome_page(frame):
     description_label = tk.Label(frame, text=description, font=("helvetica", 14),
                                  fg="#FFFFFF", bg="#1a1a1a", wraplength=800, justify="center")
     description_label.pack(pady=20)
-
 
 # Function for the main application window.
 def create_app():
@@ -73,8 +71,7 @@ def create_app():
 
     # Adding buttons to the navigation bar
     for button_text, command in nav_buttons:
-        button = ttk.Button(nav_bar, text=button_text, command=lambda 
-                            cmd=command: cmd(content_frame))
+        button = ttk.Button(nav_bar, text=button_text, command=lambda cmd=command: cmd(content_frame))
         button.pack(side="left", padx=5)
     
     # Initialize welcome page
@@ -85,4 +82,3 @@ def create_app():
 # Create and run application
 app = create_app()
 app.mainloop()
-    
