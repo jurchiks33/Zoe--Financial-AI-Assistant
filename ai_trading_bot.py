@@ -194,3 +194,4 @@ def clear_chart_container(frame):
 #----------------PROBLEMS-----------------
 #Need to fix correct timeframe display, after clicking on a different timeframe.
 #new updated timeframe is not displaying, something ith a linking for frame 2 and 3.
+#test
