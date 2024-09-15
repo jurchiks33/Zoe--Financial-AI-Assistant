@@ -2,11 +2,12 @@
 
 import tkinter as tk
 from tkinter import ttk
-import ai_trading_bot
-import sentiment_analysis
-import portfolio_optimization
-import fraud_detection
-import personal_finance_advisor
+
+import ai_trading_bot.ai_trading_bot as ai_trading_bot
+import sentiment_analysis.sentiment_analysis as sentiment_analysis
+import portfolio_optimization.portfolio_optimization as portfolio_optimization
+import fraud_detection.fraud_detection as fraud_detection
+import fraud_detection.fraud_detection as personal_finance_advisor
 
 # Function to clear content frame
 def clear_frame(frame):
