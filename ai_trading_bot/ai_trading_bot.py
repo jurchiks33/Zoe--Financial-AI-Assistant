@@ -101,11 +101,18 @@ def create_page(content_frame):
     frame = tk.Frame(content_frame, bg='#1a1a1a')
     frame.pack(fill='both', expand=True)
 
-    # Manual positioning of frames
-
-    # Place frames in a layout
-
-    # Labels to place text inside the frames (for now to identify correct frame)
+    # frames with their respective setup functions
+    create_frame1(frame)
+    create_frame2(frame)
+    create_frame3(frame)
+    create_frame4(frame)
+    create_frame5(frame)
+    create_frame6(frame)
+    create_frame7(frame)
+    create_frame8(frame)
+    create_frame9(frame)
+    create_frame10(frame)
+    create_frame11(frame)
 
 
 
