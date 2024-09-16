@@ -6,6 +6,19 @@ import yfinance as yf
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+# importing frames from the frame folder
+from frames.frame1 import create_frame1
+from frames.frame2 import create_frame2
+from frames.frame3 import create_frame3
+from frames.frame4 import create_frame4
+from frames.frame5 import create_frame5
+from frames.frame6 import create_frame6
+from frames.frame7 import create_frame7
+from frames.frame8 import create_frame8
+from frames.frame9 import create_frame9
+from frames.frame10 import create_frame10
+from frames.frame11 import create_frame11
+
 current_interval = '1d'  # Default time frame
 symbol_entry = None  # Placeholder for symbol entry widget
 
@@ -89,54 +102,18 @@ def create_page(content_frame):
     frame.pack(fill='both', expand=True)
 
     # Manual positioning of frames
-    frame1 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame2 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame3 = tk.Frame(frame, bg='#1a1a1a', bd=2, relief='solid')
-    frame4 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame5 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame6 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame7 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame8 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame9 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame10 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
-    frame11 = tk.Frame(frame, bg='#333333', bd=2, relief='solid')
 
     # Place frames in a layout
-    frame1.place(relx=0.02, rely=0.05, relwidth=0.2, relheight=0.2)
-    frame2.place(relx=0.02, rely=0.28, relwidth=0.2, relheight=0.2)
-    frame3.place(relx=0.3, rely=0.05, relwidth=0.4, relheight=0.43)
-    frame4.place(relx=0.78, rely=0.05, relwidth=0.2, relheight=0.2)
-    frame5.place(relx=0.78, rely=0.28, relwidth=0.2, relheight=0.2)
-    frame6.place(relx=0.228, rely=0.05, relwidth=0.06, relheight=0.43)  # Long vertical left
-    frame7.place(relx=0.71, rely=0.05, relwidth=0.06, relheight=0.43)  # Long vertical right
-    frame8.place(relx=0.15, rely=0.49, relwidth=0.7, relheight=0.2)
-    frame9.place(relx=0.02, rely=0.49, relwidth=0.125, relheight=0.2)
-    frame10.place(relx=0.855, rely=0.49, relwidth=0.125, relheight=0.2)
-    frame11.place(relx=0.02, rely=0.7, relwidth=0.96, relheight=0.26)
 
     # Labels to place text inside the frames (for now to identify correct frame)
-    label1 = tk.Label(frame1, text="Frame1", bg='#333333', fg='white')
-    label1.pack(expand=True)
-    label2 = tk.Label(frame2, text="Frame2", bg='#333333', fg='white')
-    label2.pack(expand=True)
-    label3 = tk.Label(frame3, text="Frame3", bg='#333333', fg='white')
-    label3.pack(expand=True)
-    label4 = tk.Label(frame4, text="Frame4", bg='#333333', fg='white')
-    label4.pack(expand=True)
-    label5 = tk.Label(frame5, text="Frame5", bg='#333333', fg='white')
-    label5.pack(expand=True)
-    label6 = tk.Label(frame6, text="Frame6", bg='#333333', fg='white')
-    label6.pack(expand=True)
-    label7 = tk.Label(frame7, text="Frame7", bg='#333333', fg='white')
-    label7.pack(expand=True)
-    label8 = tk.Label(frame8, text="Frame8", bg='#333333', fg='white')
-    label8.pack(expand=True)
-    label9 = tk.Label(frame9, text="Frame9", bg='#333333', fg='white')
-    label9.pack(expand=True)
-    label10 = tk.Label(frame10, text="Frame10", bg='#333333', fg='white')
-    label10.pack(expand=True)
-    label11 = tk.Label(frame11, text="Frame11", bg='#333333', fg='white')
-    label11.pack(expand=True)
+
+
+
+
+
+
+
+
 
     # Container for main content in the middle frame
     container = tk.Frame(frame3, bg='#1a1a1a')
