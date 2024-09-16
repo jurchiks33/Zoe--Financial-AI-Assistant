@@ -114,16 +114,8 @@ def create_page(content_frame):
     create_frame10(frame)
     create_frame11(frame)
 
-
-
-
-
-
-
-
-
     # Container for main content in the middle frame
-    container = tk.Frame(frame3, bg='#1a1a1a')
+    container = tk.Frame(frame, bg='#1a1a1a')
     container.pack(fill='both', expand=True, padx=10, pady=10)
 
     # Place a label inside container
@@ -164,7 +156,7 @@ def create_page(content_frame):
 
     # Spread buttons evenly across frame7
     for i, tf in enumerate(time_frames):
-        button = ttk.Button(frame7, text=tf, command=lambda tf=tf: update_interval(tf))
+        button = ttk.Button(container, text=tf, command=lambda tf=tf: update_interval(tf))
         button.place(relx=0.1, rely=i*0.08 + 0.02, relwidth=0.8, relheight=0.06)
 
 def clear_chart_container(frame):
