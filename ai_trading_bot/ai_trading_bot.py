@@ -23,6 +23,16 @@ from .frames.frame11 import create_frame11
 current_interval = '1d'  # Default time frame
 symbol_entry = None  # Placeholder for symbol entry widget
 
+# Define update_interval function
+def update_interval(new_interval):
+    global current_interval
+    current_interval = new_interval
+    if symbol_entry and symbol_entry.get().upper():  # Check if symbol entry is not empty
+        clear_chart_container(container)
+        plot_stock_data(symbol_entry.get().upper(), container, interval=current_interval)
+        simulate_trading_strategy(symbol_entry.get().upper(), container, interval=current_interval)
+        simulate_trading_strategy(symbol_entry.get().upper(), container, interval=current_interval)
+
 # Function for stock data plotting with time frame selection
 def plot_stock_data(symbol, container, interval='1d'):
     period = '1y'
@@ -102,15 +112,14 @@ def create_page(content_frame):
     frame = tk.Frame(content_frame, bg='#1a1a1a')
     frame.pack(fill='both', expand=True)
 
-    # frames with their respective setup functions
+    # Add all frames to the parent frame, each with its own positioning logic
     create_frame1(frame)
     create_frame2(frame)
     create_frame3(frame)
     create_frame4(frame)
     create_frame5(frame)
     create_frame6(frame)
-    create_frame7(frame)
-    create_frame8(frame)
+    create_frame7(frame, update_interval) 
     create_frame9(frame)
     create_frame10(frame)
     create_frame11(frame)
@@ -144,21 +153,21 @@ def create_page(content_frame):
 
     recreate_submit_button()
 
-    # Add time frame buttons to frame7
-    time_frames = ['1m', '2m', '3m', '5m', '15m', '30m', '60m', '4h', '1d', '1wk', '1mo', '1y']
+    # # Add time frame buttons to frame7
+    # time_frames = ['1m', '2m', '3m', '5m', '15m', '30m', '60m', '4h', '1d', '1wk', '1mo', '1y']
 
-    def update_interval(new_interval):
-        global current_interval
-        current_interval = new_interval
-        if symbol_entry.get().upper():  # Check if symbol entry is not empty
-            clear_chart_container(container)
-            plot_stock_data(symbol_entry.get().upper(), container, interval=current_interval)
-            simulate_trading_strategy(symbol_entry.get().upper(), container, interval=current_interval)
+    # def update_interval(new_interval):
+    #     global current_interval
+    #     current_interval = new_interval
+    #     if symbol_entry.get().upper():  # Check if symbol entry is not empty
+    #         clear_chart_container(container)
+    #         plot_stock_data(symbol_entry.get().upper(), container, interval=current_interval)
+    #         simulate_trading_strategy(symbol_entry.get().upper(), container, interval=current_interval)
 
-    # Spread buttons evenly across frame7
-    for i, tf in enumerate(time_frames):
-        button = ttk.Button(container, text=tf, command=lambda tf=tf: update_interval(tf))
-        button.place(relx=0.1, rely=i*0.08 + 0.02, relwidth=0.8, relheight=0.06)
+    # # Spread buttons evenly across frame7
+    # for i, tf in enumerate(time_frames):
+    #     button = ttk.Button(container, text=tf, command=lambda tf=tf: update_interval(tf))
+    #     button.place(relx=0.1, rely=i*0.08 + 0.02, relwidth=0.8, relheight=0.06)
 
 def clear_chart_container(frame):
     for widget in frame.winfo_children():
