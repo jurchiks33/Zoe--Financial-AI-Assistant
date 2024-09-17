@@ -1,6 +1,6 @@
 import tkinter as tk
 
-def crate_frame8(parent):
+def create_frame8(parent):
     frame8 = tk.Frame(parent, bg='#333333', bd=2, relief='solid')
     frame8.place(relx=0.15, rely=0.49, relwidth=0.7, relheight=0.2)
 

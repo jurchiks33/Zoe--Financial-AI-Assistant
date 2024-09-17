@@ -7,17 +7,18 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # importing frames from the frame folder
-from frames.frame1 import create_frame1
-from frames.frame2 import create_frame2
-from frames.frame3 import create_frame3
-from frames.frame4 import create_frame4
-from frames.frame5 import create_frame5
-from frames.frame6 import create_frame6
-from frames.frame7 import create_frame7
-from frames.frame8 import create_frame8
-from frames.frame9 import create_frame9
-from frames.frame10 import create_frame10
-from frames.frame11 import create_frame11
+from .frames.frame1 import create_frame1
+from .frames.frame2 import create_frame2
+from .frames.frame3 import create_frame3
+from .frames.frame4 import create_frame4
+from .frames.frame5 import create_frame5
+from .frames.frame6 import create_frame6
+from .frames.frame7 import create_frame7
+from .frames.frame8 import create_frame8
+from .frames.frame9 import create_frame9
+from .frames.frame10 import create_frame10
+from .frames.frame11 import create_frame11
+
 
 current_interval = '1d'  # Default time frame
 symbol_entry = None  # Placeholder for symbol entry widget

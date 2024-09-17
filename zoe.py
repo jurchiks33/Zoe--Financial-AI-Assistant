@@ -3,6 +3,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+# Adjust the imports using relative paths
 from ai_trading_bot import ai_trading_bot
 from sentiment_analysis import sentiment_analysis
 from portfolio_optimization import portfolio_optimization
