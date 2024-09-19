@@ -17,7 +17,7 @@ from .frames.frame7 import create_frame7
 from .frames.frame8 import create_frame8
 from .frames.frame9 import create_frame9
 from .frames.frame10 import create_frame10
-from .frames.frame11 import create_frame11
+# from .frames.frame11 import create_frame11
 
 # Global variables to hold the current state
 current_interval = '1d'  # Default time frame
@@ -122,7 +122,7 @@ def create_page(content_frame):
     create_frame7(frame, update_interval) 
     create_frame9(frame)
     create_frame10(frame)
-    create_frame11(frame)
+    # create_frame11(frame)
 
     # Container for main content in the middle frame
     container = tk.Frame(frame, bg='#1a1a1a')
