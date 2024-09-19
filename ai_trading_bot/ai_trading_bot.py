@@ -24,14 +24,14 @@ current_interval = '1d'  # Default time frame
 symbol_entry = None  # Placeholder for symbol entry widget
 
 # Define update_interval function
-def update_interval(new_interval):
+def update_interval(new_interval, container):
     global current_interval
     current_interval = new_interval
     if symbol_entry and symbol_entry.get().upper():  # Check if symbol entry is not empty
         clear_chart_container(container)
         plot_stock_data(symbol_entry.get().upper(), container, interval=current_interval)
         simulate_trading_strategy(symbol_entry.get().upper(), container, interval=current_interval)
-        simulate_trading_strategy(symbol_entry.get().upper(), container, interval=current_interval)
+
 
 # Function for stock data plotting with time frame selection
 def plot_stock_data(symbol, container, interval='1d'):
