@@ -119,14 +119,13 @@ def create_page(content_frame):
     create_frame4(frame)
     create_frame5(frame)
     create_frame6(frame)
-    create_frame7(frame, update_interval) 
+    create_frame7(frame, update_interval)
     create_frame9(frame)
     create_frame10(frame)
-    # create_frame11(frame)
 
     # Container for main content in the middle frame
     container = tk.Frame(frame, bg='#1a1a1a')
-    container.pack(fill='both', expand=True, padx=10, pady=10)
+    container.place(relx=0.3, rely=0.3, relwidth=0.4, relheight=0.4)
 
     # Add title label inside container
     label = ttk.Label(container, text="AI-Powered Trading Bot", background='#1a1a1a', 
@@ -154,6 +153,7 @@ def create_page(content_frame):
         submit_button.pack(pady=5)
 
     recreate_submit_button()
+
 
 # Function to clear the chart container when switching intervals
 def clear_chart_container(frame):
