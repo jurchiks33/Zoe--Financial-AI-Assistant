@@ -68,7 +68,8 @@ def create_app():
         ("Sentiment Analysis for Market Prediction", sentiment_analysis.create_page),
         ("Portfolio Optimization Tool", portfolio_optimization.create_page),
         ("Fraud Detection System", fraud_detection.create_page),
-        ("Personal Finance Advisor", personal_finance_advisor.create_page)
+        ("Personal Finance Advisor", personal_finance_advisor.create_page),
+        ("Macroeconomical Analysis",)
     ]
 
     # Adding buttons to the navigation bar
