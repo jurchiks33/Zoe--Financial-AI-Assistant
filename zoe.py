@@ -7,7 +7,7 @@ from sentiment_analysis import sentiment_analysis
 from portfolio_optimization import portfolio_optimization
 from fraud_detection import fraud_detection
 from personal_finance_advisor import personal_finance_advisor
-from macroeconomical_analysis import macroeconomical_analysis  
+from macroeconomical_analysis import macroeconomical_analysis  # Updated: importing the macroeconomic dashboard
 
 # Function to clear content frame
 def clear_frame(frame):
@@ -68,8 +68,8 @@ def create_app():
         ("Portfolio Optimization Tool", portfolio_optimization.create_page),
         ("Fraud Detection System", fraud_detection.create_page),
         ("Personal Finance Advisor", personal_finance_advisor.create_page),
-        ("Macroeconomical Analysis", macroeconomical_analysis.create_page) 
-        ]
+        ("Macroeconomical Analysis", macroeconomical_analysis.create_page)  # Linking the macroeconomic analysis dashboard
+    ]
 
     # Adding buttons to the navigation bar
     for button_text, command in nav_buttons:
@@ -84,4 +84,3 @@ def create_app():
 # Create and run application
 app = create_app()
 app.mainloop()
-
