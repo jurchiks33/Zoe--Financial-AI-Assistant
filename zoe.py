@@ -1,14 +1,13 @@
-# zoe.py
-
 import tkinter as tk
 from tkinter import ttk
 
-# Adjust the imports using relative paths
+# Importing individual modules to the main file
 from ai_trading_bot import ai_trading_bot
 from sentiment_analysis import sentiment_analysis
 from portfolio_optimization import portfolio_optimization
 from fraud_detection import fraud_detection
 from personal_finance_advisor import personal_finance_advisor
+from Macroeconomical_analysis import macroeconomical_analysis  
 
 # Function to clear content frame
 def clear_frame(frame):
@@ -41,7 +40,7 @@ def create_app():
     # Background color
     root.configure(bg='#1a1a1a')
 
-    # Set the window screen size 70%
+    # Set the window screen size to 70%
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     width = int(screen_width * 0.7)
@@ -69,14 +68,14 @@ def create_app():
         ("Portfolio Optimization Tool", portfolio_optimization.create_page),
         ("Fraud Detection System", fraud_detection.create_page),
         ("Personal Finance Advisor", personal_finance_advisor.create_page),
-        ("Macroeconomical Analysis",)
+        ("Macroeconomical Analysis", macroeconomical_analysis.create_page)  
     ]
 
     # Adding buttons to the navigation bar
     for button_text, command in nav_buttons:
         button = ttk.Button(nav_bar, text=button_text, command=lambda cmd=command: cmd(content_frame))
         button.pack(side="left", padx=5)
-    
+
     # Initialize welcome page
     create_welcome_page(content_frame)
 
@@ -85,3 +84,4 @@ def create_app():
 # Create and run application
 app = create_app()
 app.mainloop()
+
