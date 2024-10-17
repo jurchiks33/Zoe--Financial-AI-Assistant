@@ -7,7 +7,6 @@ from sentiment_analysis import sentiment_analysis
 from portfolio_optimization import portfolio_optimization
 from fraud_detection import fraud_detection
 from personal_finance_advisor import personal_finance_advisor
-from macroeconomical_analysis import macroeconomical_analysis
 
 # Function to clear content frame
 def clear_frame(frame):
@@ -67,8 +66,7 @@ def create_app():
         ("Sentiment Analysis for Market Prediction", sentiment_analysis.create_page),
         ("Portfolio Optimization Tool", portfolio_optimization.create_page),
         ("Fraud Detection System", fraud_detection.create_page),
-        ("Personal Finance Advisor", personal_finance_advisor.create_page),
-        ("Macroeconomical Analysis", macroeconomical_analysis.create_page)  # Linking the macroeconomic analysis dashboard
+        ("Personal Finance Advisor", personal_finance_advisor.create_page) 
     ]
 
     # Adding buttons to the navigation bar
