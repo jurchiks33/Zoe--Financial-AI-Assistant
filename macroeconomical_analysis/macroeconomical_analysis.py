@@ -1,18 +1,21 @@
+# macroeconomical_analysis.py
+
 import tkinter as tk
 from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # Import your indicator modules here
-import Benchmark_Yield_US
-import ism_report_on_business_SERVICES
-import ism_report_scraper
-import M2_Money_Supply
-import us_building_permits
-import umsci_scrapper
-import vix_analysis
-import sp500_building_permits_ma
-import Inflation_CPI_and_PPI
+from .Benchmark_Yield_US import Benchmark_Yield_US
+from .ism_report_on_business_SERVICES import ism_report_on_business_SERVICES
+from .ism_report_scraper import ism_report_scraper
+from .M2_Money_Supply import M2_Money_Supply
+from .us_building_permits import us_building_permits
+from .umsci_scrapper import umsci_scrapper
+from .vix_analysis import vix_analysis
+from .sp500_building_permits_ma import sp500_building_permits_ma
+from .Inflation_CPI_and_PPI import Inflation_CPI_and_PPI
+
 
 def create_page(content_frame):
     # Clear previous content from content_frame

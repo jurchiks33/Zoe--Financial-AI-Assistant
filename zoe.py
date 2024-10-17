@@ -7,7 +7,7 @@ from sentiment_analysis import sentiment_analysis
 from portfolio_optimization import portfolio_optimization
 from fraud_detection import fraud_detection
 from personal_finance_advisor import personal_finance_advisor
-from macroeconomical_analysis import macroeconomical_analysis  # Updated: importing the macroeconomic dashboard
+from macroeconomical_analysis import macroeconomical_analysis
 
 # Function to clear content frame
 def clear_frame(frame):
